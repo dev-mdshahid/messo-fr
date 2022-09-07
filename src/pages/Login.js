@@ -13,7 +13,7 @@ const LogIn = () => {
   // const [name, setName] = useState('');
   return (
     <main className="h-screen flex bg-[#eceff7]">
-      <div className="grid grid-cols-2 child:px-20 w-[1024px] h-[641px] m-auto bg-white rounded-xl shadow-xl ">
+      <div className="grid grid-cols-2 child:px-20 w-[1000px] h-[630px] m-auto bg-white rounded-xl shadow-xl ">
         {/* Left column */}
         <div className="grid place-items-center">
           <div>
