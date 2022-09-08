@@ -11,6 +11,10 @@ const LogIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const [name, setName] = useState('');
+
+  const login = () => {
+    console.log(email);
+  };
   return (
     <main className="h-screen flex bg-[#eceff7]">
       <div className="grid grid-cols-2 child:px-20 w-[1000px] h-[630px] m-auto bg-white rounded-xl shadow-xl ">
@@ -24,10 +28,16 @@ const LogIn = () => {
               </p>
 
               {/* Input form */}
-              <form className="grid gap-5" onSubmit={(e) => e.preventDefault()}>
+              <form
+                className="grid gap-5"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  login();
+                }}
+              >
                 <div className="">
                   <label
-                    className="text-sm block font-semibold mb-2"
+                    className="text-sm text-gray-600 block font-semibold mb-2"
                     htmlFor="email"
                   >
                     Email Address
@@ -36,11 +46,14 @@ const LogIn = () => {
                     className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
                     type="email"
                     placeholder="example@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
                   ></input>
                 </div>
                 <div className="">
                   <label
-                    className="text-sm block font-semibold mb-2"
+                    className="text-sm text-gray-600 block font-semibold mb-2"
                     htmlFor="password"
                   >
                     Password
@@ -49,6 +62,9 @@ const LogIn = () => {
                     className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
                     type="password"
                     placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
                   ></input>
                 </div>
                 <button
@@ -61,7 +77,7 @@ const LogIn = () => {
 
               <small className="text-gray-500 block mt-10 text-center">
                 Don't have an account?{' '}
-                <Link to="signup" className="text-blue-600 font-bold">
+                <Link to="/signup" className="text-blue-600 font-bold">
                   Sign up
                 </Link>
               </small>
@@ -94,10 +110,11 @@ const LogIn = () => {
                     <div className="h-0.5 w-12 mr-8 bg-[#484ff4]"></div>
                   </div>
 
+                  {/* Testimonial */}
                   <div className="flex flex-col gap-6">
                     <p className="text-[#c5e0d7cb] text-xs leading-relaxed">
-                      "MessO has changed my life drastically. Back in quarantine time,
-                      I gained tons of weight but with the help of MessO I
+                      "MessO has changed my life drastically. Back in quarantine
+                      time, I gained tons of weight but with the help of MessO I
                       managed to balance that again."
                     </p>
                     <div className="flex items-center">
