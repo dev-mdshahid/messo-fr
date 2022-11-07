@@ -17,7 +17,7 @@ const LogIn = () => {
   };
   return (
     <main className="h-screen flex bg-[#eceff7]">
-      <div className="grid grid-cols-2 child:px-20 w-[1000px] h-[630px] m-auto bg-white rounded-xl shadow-xl ">
+      <div className="grid grid-cols-2 child:px-20 w-[1000px] h-[630px] m-auto bg-white rounded-xl overflow-hidden shadow-xl ">
         {/* Left column */}
         <div className="grid place-items-center">
           <div>
@@ -68,7 +68,7 @@ const LogIn = () => {
                   ></input>
                 </div>
                 <button
-                  className="bg-messo text-white py-3 rounded mt-3"
+                  className="btn-primary"
                   type="submit"
                 >
                   Log In
@@ -86,7 +86,7 @@ const LogIn = () => {
         </div>
 
         {/* Right side */}
-        <div className="bg-messo grid items-center rounded-xl">
+        <div className="bg-messo grid items-center">
           <div>
             <div className="bg-[#93f8e1] w-10 h-10 rounded-full flex items-center justify-center">
               <FaQuoteLeft className="text-messo" />

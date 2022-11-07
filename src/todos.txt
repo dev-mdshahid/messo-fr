@@ -1,0 +1,6 @@
+1. Setup the backend
+2. Implement authentication
+3. Implement private route
+4. Complete the fitness section
+5. Complete diet and nutrition
+6. Complete beauty care

@@ -196,9 +196,9 @@ const LogIn = () => {
                     >
                       <div
                         className={
-                          'w-3 h-3 mr-3 outline outline-1 border border-2 rounded-full ' +
+                          'w-3 h-3 mr-3 outline outline-1 border border-2 border-white rounded-full ' +
                           (gender === 'male'
-                            ? 'bg-messo outline-messo border-white'
+                            ? 'bg-messo outline-messo'
                             : 'outline-gray-400')
                         }
                       ></div>
@@ -221,9 +221,9 @@ const LogIn = () => {
                     >
                       <div
                         className={
-                          'w-3 h-3 mr-3 outline outline-1 border border-2 rounded-full ' +
+                          'w-3 h-3 mr-3 outline outline-1 border border-2 border-white rounded-full ' +
                           (gender === 'female'
-                            ? 'bg-messo outline-messo border-white'
+                            ? 'bg-messo outline-messo'
                             : 'outline-gray-400')
                         }
                       ></div>
@@ -238,7 +238,7 @@ const LogIn = () => {
                   </div>
                 </div>
                 <input
-                  className="bg-messo text-white py-3 rounded mt-3 cursor-pointer"
+                  className="btn-primary cursor-pointer"
                   type="submit"
                   value={'Create account'}
                 />

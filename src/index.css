@@ -20,12 +20,15 @@ code {
 }
 
 :root {
-  --primColor: "#1f28eb";
+  --primColor: '#1f28eb';
 }
 
 @layer components {
   .bg-messo {
     @apply bg-[#1f28eb];
+  }
+  .bg-messo-light {
+    @apply bg-[rgba(31,41,235,0.2)];
   }
   .border-messo {
     @apply border-[#1f28eb];
@@ -35,6 +38,10 @@ code {
   }
   .text-messo {
     @apply text-[#1f28eb];
+  }
+
+  .btn-primary {
+    @apply bg-messo text-white py-3 rounded mt-3;
   }
 
   h1 {
