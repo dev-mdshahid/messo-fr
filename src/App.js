@@ -7,7 +7,7 @@ import Fitness from './pages/Fitness/Fitness';
 import BeautyCare from './pages/BeautyCare';
 import TestHealth from './pages/TestHealth';
 import User from './Templates/User';
-import Diet from './pages/Diet';
+import Diet from './pages/Diet/Diet';
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
           path="/fitness"
           element={<User component={<Fitness />} topbar="Fitness" />}
         />
-          
 
         <Route
           path="/diet"

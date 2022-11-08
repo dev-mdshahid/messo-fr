@@ -17,6 +17,7 @@ const ChooseTarget = ({ setTarget }) => {
               <ChoiceBox
                 icon={<FaDumbbell className={choiceIconDesign} />}
                 text={'Lose weight'}
+                description={'(Burn away extra weight)'}
                 setTarget={setTarget}
               />
             </div>
@@ -24,6 +25,7 @@ const ChooseTarget = ({ setTarget }) => {
               <ChoiceBox
                 icon={<GiBodyHeight className={choiceIconDesign} />}
                 text={'Increase height'}
+                description={'(Increase your current height)'}
                 setTarget={setTarget}
               />
             </div>
@@ -31,6 +33,7 @@ const ChooseTarget = ({ setTarget }) => {
               <ChoiceBox
                 icon={<FaWeight className={choiceIconDesign} />}
                 text={'Gain weight'}
+                description={'(Add some extra weight)'}
                 setTarget={setTarget}
               />
             </div>

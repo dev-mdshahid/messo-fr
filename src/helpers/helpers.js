@@ -51,6 +51,7 @@ export const foods = [
   {
     name: 'Rice',
     img: '',
+    description: ` `,
     calories: 130,
     nutrition: {
       protein: 2.7,
