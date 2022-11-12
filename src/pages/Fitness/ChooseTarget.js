@@ -3,6 +3,11 @@ import ChoiceBox from '../../components/Shared/ChoiceBox';
 import { FaDumbbell, FaWeight } from 'react-icons/fa';
 import { GiBodyHeight } from 'react-icons/gi';
 
+// Importing icons
+import gainWeight from '../../media/img/icons/weight_gain.png';
+import loseWeight from '../../media/img/icons/weight_lose.png';
+import increaseHeight from '../../media/img/icons/height_increase.png';
+
 const ChooseTarget = ({ setTarget }) => {
   const choiceIconDesign = 'text-6xl m-auto mb-3';
   return (
@@ -15,7 +20,7 @@ const ChooseTarget = ({ setTarget }) => {
           <div className="flex gap-6 mt-12">
             <div>
               <ChoiceBox
-                icon={<FaDumbbell className={choiceIconDesign} />}
+                img={loseWeight}
                 text={'Lose weight'}
                 description={'(Burn away extra weight)'}
                 setTarget={setTarget}
@@ -23,7 +28,7 @@ const ChooseTarget = ({ setTarget }) => {
             </div>
             <div>
               <ChoiceBox
-                icon={<GiBodyHeight className={choiceIconDesign} />}
+                img={increaseHeight}
                 text={'Increase height'}
                 description={'(Increase your current height)'}
                 setTarget={setTarget}
@@ -31,7 +36,7 @@ const ChooseTarget = ({ setTarget }) => {
             </div>
             <div>
               <ChoiceBox
-                icon={<FaWeight className={choiceIconDesign} />}
+                img={gainWeight}
                 text={'Gain weight'}
                 description={'(Add some extra weight)'}
                 setTarget={setTarget}

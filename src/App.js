@@ -4,14 +4,15 @@ import Signup from './pages/Signup';
 import { Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Fitness from './pages/Fitness/Fitness';
-import BeautyCare from './pages/BeautyCare';
+import BeautyCare from './pages/BeautyCare/BeautyCare';
 import TestHealth from './pages/TestHealth';
 import User from './Templates/User';
 import Diet from './pages/Diet/Diet';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
-    <div className="bg-[#eceff7]">
+    <div className="bg-[#eceff7] rounded-lg overflow-hidden">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
@@ -35,6 +36,10 @@ function App() {
           element={
             <User component={<TestHealth />} topbar="Test Your Health" />
           }
+        />
+        <Route
+          path="/profile"
+          element={<User component={<Profile />} topbar="My Profile" />}
         />
       </Routes>
     </div>

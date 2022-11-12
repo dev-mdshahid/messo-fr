@@ -1,17 +1,21 @@
 import React from 'react';
 import { useState } from 'react';
-import { BsCheckCircleFill } from 'react-icons/bs';
-import { FaDumbbell, FaRunning, FaWeight } from 'react-icons/fa';
-import { ImSleepy } from 'react-icons/im';
-import {
-  GiBodyHeight,
-  GiChickenOven,
-  GiConfirmed,
-  GiTreeBranch,
-} from 'react-icons/gi';
+
 import ChoiceBox from '../../components/Shared/ChoiceBox';
 import ShowDiet from './ShowDiet';
 
+// Importing icons
+import vegetarian from '../../media/img/icons/vegetarian.png';
+import nonVegetarian from '../../media/img/icons/non_vegetarian.png';
+import peraNai from '../../media/img/icons/okay.png';
+
+import loseWeigth from '../../media/img/icons/weight_lose.png';
+import gainWeigth from '../../media/img/icons/weight_gain.png';
+import maintainWeigth from '../../media/img/icons/weight_maintain.png';
+
+import inactive from '../../media/img/icons/inactive_diet.png';
+import slightlyActive from '../../media/img/icons/slightly_active_diet.png';
+import veryActive from '../../media/img/icons/very_active_diet.png';
 const DietBuilder = () => {
   //Step controller state
   const [step, setStep] = useState(1);
@@ -54,25 +58,25 @@ const DietBuilder = () => {
           <div className="flex gap-6 mt-12">
             <div onClick={() => setStep(2)}>
               <ChoiceBox
-                icon={<GiTreeBranch className={choiceIconDesign} />}
+                img={vegetarian}
                 text={'Vegetarian'}
-                description={"(Eat only vegetables)"}
+                description={'(Eat only vegetables)'}
                 setTarget={setType}
               />
             </div>
             <div onClick={() => setStep(2)}>
               <ChoiceBox
-                icon={<GiChickenOven className={choiceIconDesign} />}
+                img={nonVegetarian}
                 text={'Non Vegetarian'}
-                description={"(Eat fish, meat or chicken)"}
+                description={'(Eat fish, meat or chicken)'}
                 setTarget={setType}
               />
             </div>
             <div onClick={() => setStep(2)}>
               <ChoiceBox
-                icon={<GiConfirmed className={choiceIconDesign} />}
+                img={peraNai}
                 text={'Pera nai chill'}
-                description={"(Ekta hoilei hoi)"}
+                description={'(Ekta hoilei hoi)'}
                 setTarget={setType}
               />
             </div>
@@ -91,25 +95,25 @@ const DietBuilder = () => {
           <div className="flex gap-6 mt-12">
             <div onClick={() => setStep(3)}>
               <ChoiceBox
-                icon={<FaDumbbell className={choiceIconDesign} />}
+                img={loseWeigth}
                 text={'Lose weight'}
-                description={"(Burn away extra weight)"}
+                description={'(Burn away extra weight)'}
                 setTarget={setTarget}
               />
             </div>
             <div onClick={() => setStep(3)}>
               <ChoiceBox
-                icon={<FaWeight className={choiceIconDesign} />}
+                img={gainWeigth}
                 text={'Gain weight'}
-                description={"(Add some extra weight)"}
+                description={'(Add some extra weight)'}
                 setTarget={setTarget}
               />
             </div>
             <div onClick={() => setStep(5)}>
               <ChoiceBox
-                icon={<BsCheckCircleFill className={choiceIconDesign} />}
+                img={maintainWeigth}
                 text={'Maintain weight'}
-                description={"(Happy with the current weight)"}
+                description={'(Happy with the current weight)'}
                 setTarget={setTarget}
               />
             </div>
@@ -190,26 +194,26 @@ const DietBuilder = () => {
             <div className="flex gap-6 mt-12">
               <div onClick={() => setStep(step + 1)}>
                 <ChoiceBox
-                  icon={<ImSleepy className={choiceIconDesign} />}
+                  img={inactive}
                   text={'Inactive'}
                   description={'(Little to no exercise)'}
-                  setTarget={setType}
+                  setTarget={setActivity}
                 />
               </div>
               <div onClick={() => setStep(step + 1)}>
                 <ChoiceBox
-                  icon={<FaRunning className={choiceIconDesign} />}
+                  img={slightlyActive}
                   text={'Slightly active'}
                   description={'(Exercise 3 times/ week)'}
-                  setTarget={setType}
+                  setTarget={setActivity}
                 />
               </div>
               <div onClick={() => setStep(step + 1)}>
                 <ChoiceBox
-                  icon={<FaDumbbell className={choiceIconDesign} />}
+                  img={veryActive}
                   text={'Very active'}
                   description={'(Intense workout 4-5 times/week)'}
-                  setTarget={setType}
+                  setTarget={setActivity}
                 />
               </div>
             </div>

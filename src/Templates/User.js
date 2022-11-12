@@ -8,7 +8,8 @@ const User = ({ component, topbar }) => {
       <SideMenu />
       <div className="w-full">
         {topbar ? <TopBar name={topbar} /> : null}
-        <div className='m-5'>{component}</div>
+
+        <div className="m-5">{component}</div>
       </div>
     </main>
   );

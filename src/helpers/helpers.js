@@ -49,9 +49,11 @@ export const exercises = [
 
 export const foods = [
   {
+    id: 'wg-1', 
+    category: 'whole grain',
     name: 'Rice',
-    img: '',
-    description: ` `,
+    img: 'https://www.risodemedici.it/wp-content/uploads/2019/10/rottura-riso.jpg',
+    description: `Rice is the seed of the grass species Oryza sativa or less commonly Oryza glaberrima. The name wild rice is usually used for species of the genera Zizania and Porteresia, both wild and domesticated, although the term may also be used for primitive or uncultivated varieties of Oryza.`,
     calories: 130,
     nutrition: {
       protein: 2.7,
@@ -94,5 +96,5 @@ export const hairSuggestions = [
     for: 'hair',
     description: '',
     scalp_type: '',
-  }
-]
+  },
+];
