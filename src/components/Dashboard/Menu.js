@@ -15,7 +15,7 @@ const Menu = ({ icon, name, to }) => {
     >
       <span className="text-2xl">{icon}</span>
 
-      <h4 className="text-sm font-semibold ml-3">{name}</h4>
+      <h4 className="text-sm font-semibold ml-3 hidden xl:inline-block">{name}</h4>
     </NavLink>
   );
 };
