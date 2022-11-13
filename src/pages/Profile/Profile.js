@@ -7,7 +7,7 @@ const Profile = () => {
   return (
     <div className="flex gap-5">
       <UserInfo />
-      <div className="w-[400px] flex flex-col gap-5">
+      <div className="w-[400px] xl:flex flex-col gap-5 hidden">
         <CompletionCard />
         <PremiumOffer />
       </div>

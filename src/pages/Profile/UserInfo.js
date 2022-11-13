@@ -50,7 +50,7 @@ const UserInfo = () => {
             Health information
           </h2>
 
-          <div className="mt-4 grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-5 child:rounded-xl child:p-3">
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 child:rounded-xl child:p-3">
             <div className="bg-blue-100 shadow-lg hover:shadow-xl transition">
               <SingleInfoCard
                 title="Your current weight"
@@ -103,7 +103,7 @@ const UserInfo = () => {
         <div className="mt-12 whitespace-nowrap">
           <h2 className="text-xl font-bold text-blue-900 pb-6">Active Plans</h2>
 
-          <div className="grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-5 transition ">
+          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 transition ">
             {/* Single plan UI */}
             <div className="border rounded-lg py-4 hover:shadow-lg transition cursor-pointer">
               <div className="flex justify-between items-center">
