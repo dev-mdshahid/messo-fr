@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BiSearchAlt } from 'react-icons/bi';
 import {
   IoGiftOutline,
@@ -17,9 +17,20 @@ import { Fragment, useEffect, useRef, useState } from 'react';
 
 // Importing user data
 import { users } from '../../helpers/helpers';
+import { LoginContext } from '../../helpers/Contexts';
 
 const TopBar = ({ name }) => {
   const navigate = useNavigate();
+  const { authenticated, setAuthenticated, setUser, user } =
+    useContext(LoginContext);
+
+  //Logout function
+  const logout = () => {
+    localStorage.setItem('email', null);
+    setAuthenticated(false);
+    setUser({});
+    window.location.reload();
+  };
   return (
     <div className="bg-white p-5 py-2 ml h-fit flex items-center justify-between">
       {/* left title */}
@@ -111,6 +122,7 @@ const TopBar = ({ name }) => {
                     <Menu.Item>
                       {({ active }) => (
                         <button
+                          onClick={() => logout()}
                           className={`${
                             active
                               ? 'bg-violet-500 text-white'
@@ -128,7 +140,7 @@ const TopBar = ({ name }) => {
                               aria-hidden="true"
                             />
                           )}
-                          Delete
+                          Log out
                         </button>
                       )}
                     </Menu.Item>

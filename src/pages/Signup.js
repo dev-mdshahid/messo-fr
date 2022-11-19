@@ -1,19 +1,59 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { testimonials } from '../helpers/helpers';
+import { Authentication } from '../Classes/Authentication';
+import { toast } from 'react-toastify';
+import { LoginContext } from '../helpers/Contexts';
 // ------------------------------------------------------------------
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [gender, setGender] = useState('');
-
   const [index, setIndex] = useState(0);
 
+
+  const { authenticated, setAuthenticated, user, setUser } =
+    useContext(LoginContext);
+  if (authenticated) {
+    navigate('/dashboard');
+  }
+
+
+  // Authentication
+  const auth = new Authentication();
   const createAccount = () => {
     console.log(email);
+    const info = {
+      fname,
+      lname,
+      gender,
+      email,
+      password,
+    };
+
+    const fetchData = async () => {
+      const res = await fetch(auth.uribk + '/create_account', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(info),
+      });
+      const data = await res.json();
+      if (data) {
+        delete info.password;
+        setUser(info);
+        console.log(user);
+        toast.success('Authentication successful!');
+      } else {
+        toast.error('Account creation failed!');
+      }
+      setAuthenticated(data);
+    };
+
+    fetchData();
   };
 
   return (

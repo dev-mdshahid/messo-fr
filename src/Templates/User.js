@@ -1,8 +1,8 @@
 import React from 'react';
 import SideMenu from '../components/Shared/SideMenu';
 import TopBar from '../components/Shared/TopBar';
-
 const User = ({ component, topbar }) => {
+  
   return (
     <main className="flex">
       <SideMenu />

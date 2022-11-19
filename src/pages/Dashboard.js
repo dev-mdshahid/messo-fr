@@ -8,6 +8,7 @@ import SingleStat from '../components/Dashboard/SingleStat';
 import TopBar from '../components/Shared/TopBar';
 
 const Dashboard = () => {
+
   return (
     <div className="grid grid-cols-4 2xl:grid-cols-6 gap-4 ml-4 mt-4 child:bg-blue-100">
       {/* Box - 1 */}

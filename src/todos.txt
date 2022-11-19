@@ -1,6 +1,7 @@
-1. Setup the backend
-2. Implement authentication
-3. Implement private route
-4. Complete the fitness section
-5. Complete diet and nutrition
-6. Complete beauty care
+// Things to do before making it presentable
+
+1. Implement authentication
+2. Implement profile information management (update)
+3. Data insertion of fitness, diet and beauty care section 
+4. Complete the calculation of these sections 
+5. redirect to the page after logging in

@@ -1,22 +1,57 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import userDp from '../media/img/shahid.jpg';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Importing icons
 import { FaQuoteLeft } from 'react-icons/fa';
+import { Authentication } from '../Classes/Authentication';
+import { useContext } from 'react';
+import { LoginContext } from '../helpers/Contexts';
 
 // ------------------------------------------------------------------
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const [name, setName] = useState('');
+  const auth = new Authentication();
+  const { authenticated, setAuthenticated, user, setUser } =
+    useContext(LoginContext);
 
+  if (authenticated) {
+    navigate('/dashboard');
+  }
+  console.log(authenticated);
   const login = () => {
-    console.log(email);
+    const info = { email, password };
+
+    const fetchData = async () => {
+      const res = await fetch(auth.uribk + '/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(info),
+      });
+      const data = await res.json();
+      if (data) {
+        toast.success('Authentication successful!');
+        setAuthenticated(true);
+        setUser(data);
+        localStorage.setItem('email', email);
+      } else {
+        toast.error('Authentication failed!');
+        setAuthenticated(false);
+      }
+    };
+
+    fetchData();
   };
+
   return (
     <main className="h-screen flex bg-[#eceff7]">
+      <ToastContainer />
       <div className="grid grid-cols-2 child:px-20 w-[1000px] h-[630px] m-auto bg-white rounded-xl overflow-hidden shadow-xl ">
         {/* Left column */}
         <div className="grid place-items-center">
@@ -67,10 +102,7 @@ const LogIn = () => {
                     required
                   ></input>
                 </div>
-                <button
-                  className="btn-primary"
-                  type="submit"
-                >
+                <button className="btn-primary" type="submit">
                   Log In
                 </button>
               </form>
