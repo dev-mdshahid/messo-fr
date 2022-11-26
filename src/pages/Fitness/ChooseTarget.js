@@ -21,7 +21,7 @@ const ChooseTarget = ({ setTarget }) => {
             <div>
               <ChoiceBox
                 img={loseWeight}
-                text={'Lose weight'}
+                text={'Lose Weight'}
                 description={'(Burn away extra weight)'}
                 setTarget={setTarget}
               />
@@ -29,7 +29,7 @@ const ChooseTarget = ({ setTarget }) => {
             <div>
               <ChoiceBox
                 img={increaseHeight}
-                text={'Increase height'}
+                text={'Increase Height'}
                 description={'(Increase your current height)'}
                 setTarget={setTarget}
               />
@@ -37,7 +37,7 @@ const ChooseTarget = ({ setTarget }) => {
             <div>
               <ChoiceBox
                 img={gainWeight}
-                text={'Gain weight'}
+                text={'Gain Weight'}
                 description={'(Add some extra weight)'}
                 setTarget={setTarget}
               />

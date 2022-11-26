@@ -5,3 +5,5 @@
 3. Data insertion of fitness, diet and beauty care section 
 4. Complete the calculation of these sections 
 5. redirect to the page after logging in
+6. Feedback from the user
+7. Food description format

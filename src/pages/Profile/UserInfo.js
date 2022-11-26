@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import userDp from '../../media/img/userdp/shahid.jpg';
+import UpdateModal from '../../components/Modals/UpdateModal';
 
 // Importing icons
 import { FaMale, FaTachometerAlt, FaWeight } from 'react-icons/fa';
@@ -11,10 +12,16 @@ import {
   MdOutlineIosShare,
 } from 'react-icons/md';
 import { BiDumbbell } from 'react-icons/bi';
+import {AiFillEdit} from 'react-icons/ai';
 
 import SingleInfoCard from './SingleInfoCard';
+import { useContext } from 'react';
+import { LoginContext } from '../../helpers/Contexts';
 
 const UserInfo = () => {
+  const { user } = useContext(LoginContext);
+  const [updateHealthModal, setUpdateHealthModal] = useState(false);
+  const { fname, lname, gender, email } = user;
   return (
     <div className="bg-white p-6 shadow rounded-lg w-full select-none">
       <div className="bg-[url('https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-040.jpg')] bg-no-repeat bg-center bg-cover rounded-xl w-full h-[200px]"></div>
@@ -27,9 +34,9 @@ const UserInfo = () => {
         />
         <div className="absolute left-40 top-3">
           <h2 className="text-2xl font-bold text-blue-900">
-            Md Shahidul Islam
+            {fname + ' ' + lname}
           </h2>
-          <p className="capitalize pt-px text-gray-500">Front end developer</p>
+          <p className="pt-px text-gray-500">{email}</p>
         </div>
       </div>
 
@@ -46,9 +53,12 @@ const UserInfo = () => {
 
         {/* Health information */}
         <div className="mt-7 whitespace-nowrap">
-          <h2 className="text-xl font-bold text-blue-900 pb-2">
-            Health information
+          <h2 className="text-xl font-bold text-blue-900 pb-2 flex items-center justify-between">
+            <span>Health information</span> 
+            <AiFillEdit/>
           </h2>
+
+          {/* <UpdateModal satus={updateHealthModal}/> */}
 
           <div className="mt-4 grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-5 child:rounded-xl child:p-3">
             <div className="bg-blue-100 shadow-lg hover:shadow-xl transition">

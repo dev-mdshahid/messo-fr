@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CaloriesChart = () => {
+const CaloriesChart = ({ targetedCalories, idealCalories }) => {
   return (
     <div className="w-[300px] bg-white h-fit p-5 rounded-xl border border-blue-100">
       <h2 className="text-blue-900 text-2xl font-semibold pb-3 capitalize">
@@ -12,16 +12,23 @@ const CaloriesChart = () => {
 
         <div className="flex justify-between">
           <p className="pl-4">Total demand</p>
-          <p className="pr-1">2400 cal</p>
+          <p className="pr-1">{idealCalories} cal</p>
         </div>
         <div className="flex justify-between">
           <p className="pl-4">Total added</p>
-          <p className="pr-1">1400 cal</p>
+          <p className="pr-1">{targetedCalories} cal</p>
         </div>
         <div className="h-px bg-blue-900 opacity-20 ml-3 my-px"></div>
         <div className="flex justify-between">
-          <p className="pl-4">Deficit</p>
-          <p className="pr-1">1000 cal</p>
+          <p className="pl-4">
+            {targetedCalories > idealCalories ? 'Extra' : 'Deficit'}
+          </p>
+          <p className="pr-1">
+            {targetedCalories > idealCalories
+              ? targetedCalories - idealCalories
+              : idealCalories - targetedCalories}{' '}
+            cal
+          </p>
         </div>
       </div>
 

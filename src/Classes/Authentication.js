@@ -24,8 +24,6 @@ export class Authentication extends Messo {
       .then((data) => {
         localStorage.setItem('authenticated', data);
       });
-      console.log(JSON.parse(localStorage.getItem('authenticated')));
+    console.log(JSON.parse(localStorage.getItem('authenticated')));
   }
-
- 
 }
