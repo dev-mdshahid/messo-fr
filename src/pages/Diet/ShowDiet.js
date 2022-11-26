@@ -6,6 +6,7 @@ import { Diet } from '../../Classes/Diet';
 import CaloriesChart from './CaloriesChart';
 import FoodContainer from './FoodContainer';
 import cleanVegetable from '../../media/lotties/clean_vegetable.json';
+import midScreen from '../../media/lotties/mid_screen.json';
 import { Player } from '@lottiefiles/react-lottie-player';
 import { LoginContext } from '../../helpers/Contexts';
 import DietContainer from './DietContainer';
@@ -74,7 +75,7 @@ const ShowDiet = ({
   console.log(dietChart);
   return (
     <div>
-      {foods.length ? (
+      {dietChart && foods.length ? (
         <div className="flex justify-center">
           <div>
             <h1 className="text-4xl capitalize mb-10 mt-10 text-center">
@@ -139,13 +140,7 @@ const ShowDiet = ({
         </div>
       ) : (
         <div>
-          <Player src={cleanVegetable} className="w-[500px]" loop autoplay />
-          <Player
-            src="https://assets2.lottiefiles.com/packages/lf20_kyi8qg4t.json"
-            className="h-[100px]"
-            loop
-            autoplay
-          />
+          <Player src={midScreen} className="w-[500px]" loop autoplay />
           <h2 className="text-2xl font-semibold text-center text-blue-900">
             Creating a customized diet plan for you...
           </h2>
