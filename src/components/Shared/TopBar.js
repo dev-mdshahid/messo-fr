@@ -7,6 +7,9 @@ import {
 } from 'react-icons/io5';
 import { Link, useNavigate } from 'react-router-dom';
 
+//Importing dp
+import dummyDp from '../../media/img/icons/dummy_avatar.png';
+
 //Importing icons
 import { MdDelete } from 'react-icons/md';
 import { FaUserCircle } from 'react-icons/fa';
@@ -23,6 +26,7 @@ const TopBar = ({ name }) => {
   const navigate = useNavigate();
   const { authenticated, setAuthenticated, setUser, user } =
     useContext(LoginContext);
+    const {fname, lname} = user;
 
   //Logout function
   const logout = () => {
@@ -77,7 +81,7 @@ const TopBar = ({ name }) => {
                 <div className="w-px h-1.5"></div>
                 <img
                   className="w-9 h-9 rounded-full"
-                  src={users[0].img}
+                  src={dummyDp}
                   alt={users[0].name}
                 />
               </Menu.Button>
@@ -150,7 +154,7 @@ const TopBar = ({ name }) => {
             </Menu>
           </div>
           <div className="text-xs">
-            <p className="font-bold whitespace-nowrap">{users[0].name}</p>
+            <p className="font-bold whitespace-nowrap">{fname + ' ' + lname}</p>
             <p className="font-semibold whitespace-nowrap text-gray-500">
               User
             </p>

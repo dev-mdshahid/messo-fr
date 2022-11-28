@@ -13,15 +13,16 @@ const LogIn = () => {
   const [fname, setFname] = useState('');
   const [lname, setLname] = useState('');
   const [gender, setGender] = useState('');
+  const [age, setAge] = useState();
+  const [height, setHeight] = useState();
+  const [weight, setWeight] = useState();
   const [index, setIndex] = useState(0);
-
 
   const { authenticated, setAuthenticated, user, setUser } =
     useContext(LoginContext);
   if (authenticated) {
     navigate('/dashboard');
   }
-
 
   // Authentication
   const auth = new Authentication();
@@ -33,6 +34,9 @@ const LogIn = () => {
       gender,
       email,
       password,
+      age,
+      height,
+      weight,
     };
 
     const fetchData = async () => {
@@ -183,42 +187,6 @@ const LogIn = () => {
                   </div>
                 </div>
 
-                {/* Email input */}
-                <div className="">
-                  <label
-                    className="text-sm text-gray-600 block font-semibold mb-2"
-                    htmlFor="email"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
-                    type="email"
-                    placeholder="example@gmail.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  ></input>
-                </div>
-
-                {/* Password input */}
-                <div className="">
-                  <label
-                    className="text-sm text-gray-600 block font-semibold mb-2"
-                    htmlFor="password"
-                  >
-                    Password
-                  </label>
-                  <input
-                    className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  ></input>
-                </div>
-
                 {/* Gender input */}
                 <div>
                   <h4 className="text-sm text-gray-600 block font-semibold mb-2">
@@ -275,6 +243,99 @@ const LogIn = () => {
                         Female
                       </p>
                     </div>
+                  </div>
+                </div>
+
+                {/* Email input */}
+                <div className="">
+                  <label
+                    className="text-sm text-gray-600 block font-semibold mb-2"
+                    htmlFor="email"
+                  >
+                    Email address
+                  </label>
+                  <input
+                    className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
+                    type="email"
+                    placeholder="example@gmail.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  ></input>
+                </div>
+
+                {/* Password input */}
+                <div className="">
+                  <label
+                    className="text-sm text-gray-600 block font-semibold mb-2"
+                    htmlFor="password"
+                  >
+                    Password
+                  </label>
+                  <input
+                    className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  ></input>
+                </div>
+
+                {/* Height and weight */}
+                <div className="flex gap-6">
+                  <div className="">
+                    <label
+                      className="text-sm text-gray-600 block font-semibold mb-2"
+                      htmlFor="age"
+                    >
+                      Age (yrs)
+                    </label>
+                    <input
+                      className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
+                      type="number"
+                      name="age"
+                      placeholder="Ex. 25"
+                      value={age}
+                      onChange={(e) => setAge(e.target.value)}
+                      required
+                    ></input>
+                  </div>
+                  <div className="">
+                    <label
+                      className="text-sm text-gray-600 block font-semibold mb-2"
+                      htmlFor="height"
+                    >
+                      Height (cm)
+                    </label>
+                    <input
+                      className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
+                      name="height"
+                      type="number"
+                      min={50}
+                      placeholder="Ex. 165"
+                      value={height}
+                      onChange={(e) => setHeight(e.target.value)}
+                      required
+                    ></input>
+                  </div>
+
+                  <div className="">
+                    <label
+                      className="text-sm text-gray-600 block font-semibold mb-2"
+                      htmlFor="weight"
+                    >
+                      Weight (kg)
+                    </label>
+                    <input
+                      className="border border-gray-300 rounded outline-messo px-4 py-2 w-full"
+                      type="number"
+                      name="weight"
+                      placeholder="Ex. 50"
+                      value={weight}
+                      onChange={(e) => setWeight(e.target.value)}
+                      required
+                    ></input>
                   </div>
                 </div>
                 <input

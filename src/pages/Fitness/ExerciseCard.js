@@ -7,7 +7,7 @@ const ExerciseCard = ({ exercise, plan, id }) => {
     exercise;
   const { rep, set, time } = plan;
   return (
-    <div className="w-[700px] flex justify-between gap-4 p-2 m-3 rounded-lg hover:shadow-lg cursor-pointer border transition items-center bg-white">
+    <div className="w-[700px] flex justify-between gap-4 p-2 m-3 mb-1 rounded-lg hover:shadow-lg cursor-pointer border transition items-center bg-white">
       <div className="flex items-center gap-4">
         <h1 className="text-2xl text-blue-900 pl-1 opacity-70">{id + 1}</h1>
         <img src={img} alt={name} className=" rounded-lg w-[60px]" />

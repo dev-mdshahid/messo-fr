@@ -22,7 +22,6 @@ import sensitiveSkin from '../../media/img/icons/sensitive_skin.png';
 // Skin concern
 import rashSkin from '../../media/img/icons/rash_skin.png';
 import acneSkin from '../../media/img/icons/acne_skin.png';
-import dullSkin from '../../media/img/icons/dull_skin.png';
 import brightSkin from '../../media/img/icons/bright_skin.png';
 import antiAgingSkin from '../../media/img/icons/anti_aging_skin.png';
 import blemishSkin from '../../media/img/icons/blemish_skin.png';
@@ -38,6 +37,18 @@ import rebonded from '../../media/img/icons/rebonded_hair.png';
 import colored from '../../media/img/icons/colored_hair.png';
 import dandruff from '../../media/img/icons/dandruff_hair.png';
 
+//body type
+import normalBody from '../../media/img/icons/normal_body.png';
+import dryBody from '../../media/img/icons/dry_body.png';
+import sensitiveBody from '../../media/img/icons/sensitive_body.png';
+
+// Skin concern
+import rashBody from '../../media/img/icons/rash_body.png';
+import acneBody from '../../media/img/icons/acne_body.png';
+import brightBody from '../../media/img/icons/bright_body.png';
+import { Beauty } from '../../Classes/Beauty';
+import ShowProducts from './ShowProducts';
+
 const BeautyCare = () => {
   const [step, setStep] = useState(1);
   const [type, setType] = useState();
@@ -48,6 +59,33 @@ const BeautyCare = () => {
   const [faceConcern, setFaceConcern] = useState();
   const [bodyType, setBodyType] = useState();
   const [bodyConcern, setBodyConcern] = useState();
+
+  const choiceList = {
+    type,
+    scalpType,
+    hairConcern,
+    skinPart,
+    faceType,
+    faceConcern,
+    bodyType,
+    bodyConcern,
+  };
+
+  const infoObj = {
+    type,
+    scalpType,
+    hairConcern,
+    skinPart,
+    faceType,
+    faceConcern,
+    bodyType,
+    bodyConcern,
+  };
+
+  const beautyObj = new Beauty();
+  const products = beautyObj.getSkincareProducts(infoObj);
+  const suggestion = beautyObj.getSkinCareSuggestions(infoObj);
+  console.log(products);
 
   return step === 1 ? (
     <div>
@@ -86,7 +124,7 @@ const BeautyCare = () => {
         <h1 className="text-4xl text-center">Which portion of skin?</h1>
         {/* Choice boxes */}
         <div className="flex gap-6 mt-12">
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(7)}>
             <ChoiceBox
               img={bodySkin}
               text={'Body'}
@@ -162,7 +200,7 @@ const BeautyCare = () => {
         <h1 className="text-4xl text-center">What are you worried about?</h1>
         {/* Choice boxes */}
         <div className="flex gap-6 mt-12 flex-wrap justify-center max-w-[900px]">
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={rashSkin}
               text={'Rashness'}
@@ -171,16 +209,7 @@ const BeautyCare = () => {
             />
           </div>
 
-          <div onClick={() => setStep(step + 1)}>
-            <ChoiceBox
-              img={dullSkin}
-              text={'Dullness'}
-              description={'(Fix your boring dull skin)'}
-              setTarget={setFaceConcern}
-            />
-          </div>
-
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={acneSkin}
               text={'Acne issue'}
@@ -189,15 +218,15 @@ const BeautyCare = () => {
             />
           </div>
 
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={brightSkin}
-              text={'Brghtening'}
+              text={'Brightening'}
               description={'(Make your skin glow)'}
               setTarget={setFaceConcern}
             />
           </div>
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={antiAgingSkin}
               text={'Anti aging'}
@@ -205,11 +234,11 @@ const BeautyCare = () => {
               setTarget={setFaceConcern}
             />
           </div>
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={blemishSkin}
-              text={'Blemishes'}
-              description={'(Fix blemishes on your skin)'}
+              text={'Dehydration'}
+              description={'(Fix dehydration of your skin)'}
               setTarget={setFaceConcern}
             />
           </div>
@@ -236,7 +265,7 @@ const BeautyCare = () => {
               img={oilySkin}
               text={'Oily'}
               description={'(Produced excess oil)'}
-              setTarget={setFaceType}
+              setTarget={setScalpType}
             />
           </div>
           <div onClick={() => setStep(step + 1)}>
@@ -257,7 +286,7 @@ const BeautyCare = () => {
         <h1 className="text-4xl text-center">What is your hair concern?</h1>
         {/* Choice boxes */}
         <div className="flex gap-6 mt-12 flex-wrap justify-center max-w-[900px]">
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={hairFall}
               text={'Hair fall'}
@@ -266,7 +295,7 @@ const BeautyCare = () => {
             />
           </div>
 
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={hairGrowth}
               text={'Hair growth'}
@@ -275,16 +304,16 @@ const BeautyCare = () => {
             />
           </div>
 
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={rebonded}
-              text={'Rebonded hair'}
+              text={'Rebonded Hair'}
               description={'(Straghten your curly hair)'}
               setTarget={setHairConcern}
             />
           </div>
 
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={colored}
               text={'Colored hair'}
@@ -292,7 +321,7 @@ const BeautyCare = () => {
               setTarget={setHairConcern}
             />
           </div>
-          <div onClick={() => setStep(step + 1)}>
+          <div onClick={() => setStep(9)}>
             <ChoiceBox
               img={dandruff}
               text={'Dandruff'}
@@ -303,8 +332,94 @@ const BeautyCare = () => {
         </div>
       </div>
     </div>
+  ) : step === 7 ? (
+    <div className="h flex justify-center">
+      <div className="mt-20 flex flex-col items-center">
+        {/* Question */}
+        <h1 className="text-4xl text-center">What is your body skin type?</h1>
+        {/* Choice boxes */}
+        <div className="flex gap-6 mt-12 flex-wrap justify-center max-w-[1000px]">
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={normalBody}
+              text={'Normal'}
+              description={'(Nothing to be worried about)'}
+              setTarget={setBodyType}
+            />
+          </div>
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={oilySkin}
+              text={'Oily'}
+              description={'(Produced excess oil)'}
+              setTarget={setBodyType}
+            />
+          </div>
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={dryBody}
+              text={'Dry'}
+              description={'(Lacking too much water & oil)'}
+              setTarget={setBodyType}
+            />
+          </div>
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={sensitiveBody}
+              text={'Sensitive'}
+              description={'(Stinging, burning, pain sensations)'}
+              setTarget={setBodyType}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  ) : step === 8 ? (
+    <div className="h flex justify-center">
+      <div className="mt-20 flex flex-col items-center">
+        {/* Question */}
+        <h1 className="text-4xl text-center">What are you worried about?</h1>
+        {/* Choice boxes */}
+        <div className="flex gap-6 mt-12 flex-wrap justify-center max-w-[900px]">
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={rashBody}
+              text={'Rashness'}
+              description={'(Fix embarassing skin rash)'}
+              setTarget={setBodyConcern}
+            />
+          </div>
+
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={acneBody}
+              text={'Acne issue'}
+              description={'(Decrease the annoying acne)'}
+              setTarget={setBodyConcern}
+            />
+          </div>
+
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={brightBody}
+              text={'Brightening'}
+              description={'(Make your skin glow)'}
+              setTarget={setBodyConcern}
+            />
+          </div>
+          <div onClick={() => setStep(step + 1)}>
+            <ChoiceBox
+              img={antiAgingSkin}
+              text={'Anti aging'}
+              description={'(Prevent aging to stay evergreen)'}
+              setTarget={setBodyConcern}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
   ) : (
-    <div>Here is your suggestion</div>
+    <ShowProducts products={products} choiceList={choiceList} suggestion={suggestion}/>
   );
 };
 

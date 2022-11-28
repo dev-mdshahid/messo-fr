@@ -81,8 +81,8 @@ const DietBuilder = () => {
             <div onClick={() => setStep(2)}>
               <ChoiceBox
                 img={peraNai}
-                text={'Pera nai chill'}
-                description={'(Ekta hoilei hoi)'}
+                text={'No preference'}
+                description={'(Okay with everything)'}
                 setTarget={setType}
               />
             </div>

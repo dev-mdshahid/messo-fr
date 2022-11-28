@@ -4,6 +4,7 @@ import ExerciseCard from './ExerciseCard';
 
 const ExerciseContainer = ({ title, exercises, level }) => {
   const exerciseBuilder = new Fitness();
+  
   let exercisePlan;
   if(level === 'Beginner') {
     exercisePlan = exerciseBuilder.getBeginnerExercises();

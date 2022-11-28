@@ -49,6 +49,7 @@ const ShowDiet = ({
 
   // Class objects
   const auth = new Authentication();
+  const dietObj = new Diet();
 
   useEffect(() => {
     const fetchFoods = async () => {
@@ -57,6 +58,7 @@ const ShowDiet = ({
       setFoods(data);
     };
     fetchFoods();
+
     const fetchDiet = async () => {
       const res = await fetch(auth.uribk + '/build_diet_chart', {
         method: 'POST',

@@ -28,7 +28,7 @@ const SideMenu = () => {
         <div className="mt-12 xl:mt-4 flex flex-col gap-2 text-gray-500 child:whitespace-nowrap xl:child:pr-8 transition">
           {/* Navigation menu*/}
           <Menu icon={<IoBarChart />} name="Dashboard" to="/dashboard" />
-          <Menu icon={<FaUserCircle />} name="My Profile" to="/profile" />
+          {/* <Menu icon={<FaUserCircle />} name="My Profile" to="/profile" /> */}
           <Menu icon={<IoBarbell />} name="Fitness" to="/fitness" />
           <Menu icon={<IoFitness />} name="Diet and Nutrition" to="/diet" />
           <Menu
@@ -36,11 +36,11 @@ const SideMenu = () => {
             name="Beauty Care"
             to="/beautycare"
           />
-          <Menu
+          {/* <Menu
             icon={<GiHealthNormal />}
             name="Test Your Health"
             to="/testhealth"
-          />
+          /> */}
         </div>
 
         <div className="pr-4 hidden xl:inline-block">
