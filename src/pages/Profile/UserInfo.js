@@ -15,6 +15,8 @@ import { BiDumbbell } from 'react-icons/bi';
 import { AiFillEdit } from 'react-icons/ai';
 
 import SingleInfoCard from './SingleInfoCard';
+
+// Context (Shahid babar kaj)
 import { useContext } from 'react';
 import { LoginContext } from '../../helpers/Contexts';
 
@@ -48,9 +50,12 @@ const UserInfo = () => {
           className="absolute w-32 h-32 bottom-6 left-4 rounded-full border border-2 border-white"
         />
         <div className="absolute left-40 top-3">
+          {/* Name */}
           <h2 className="text-2xl font-bold text-blue-900">
             {fname + ' ' + lname}
           </h2>
+
+          {/* Email */}
           <p className="pt-px text-gray-500">{email}</p>
         </div>
       </div>

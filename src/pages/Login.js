@@ -24,6 +24,7 @@ const LogIn = () => {
   if (authenticated) {
     navigate('/dashboard');
   }
+  
   console.log(authenticated);
   const login = () => {
     const info = { email, password };

@@ -1,6 +1,5 @@
 import React from 'react';
 import DietFoodCard from './DietFoodCard';
-import FoodCard from './FoodCard';
 
 const DietContainer = ({ title, foods, calories, allFoods, time }) => {
   console.log(foods);

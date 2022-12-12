@@ -8,6 +8,9 @@ import { LoginContext } from '../helpers/Contexts';
 
 const LogIn = () => {
   const navigate = useNavigate();
+
+  // State for every information (special type of variable)
+  // re-render or updates the entire UI when the set method is called
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fname, setFname] = useState('');
@@ -18,6 +21,7 @@ const LogIn = () => {
   const [weight, setWeight] = useState();
   const [index, setIndex] = useState(0);
 
+  // Context
   const { authenticated, setAuthenticated, user, setUser } =
     useContext(LoginContext);
   if (authenticated) {
@@ -28,6 +32,7 @@ const LogIn = () => {
   const auth = new Authentication();
   const createAccount = () => {
     console.log(email);
+
     const info = {
       fname,
       lname,
@@ -61,6 +66,7 @@ const LogIn = () => {
   };
 
   return (
+    // Tailwind CSS
     <main className="h-screen flex bg-[#eceff7]">
       <div className="p-2.5 grid grid-cols-5 child:p-10 w-[1000px] m-auto bg-white rounded-xl shadow-xl ">
         {/* ---------------------------Left side ---------------------*/}

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import ChooseTarget from './ChooseTarget';
-import GoalStat from './GoalStat';
 import ShowPlan from './ShowPlan';
 
 const Fitness = () => {
@@ -10,15 +9,13 @@ const Fitness = () => {
 
   return (
     <div className={`h-[${sectionHeight}] overflow-auto`}>
-      {target === '' ? (
-        <ChooseTarget setTarget={setTarget} />
-      ) : (
+      {
         <div className="">
-          <div className=''>
+          <div className="">
             <ShowPlan />
           </div>
         </div>
-      )}
+      }
     </div>
   );
 };

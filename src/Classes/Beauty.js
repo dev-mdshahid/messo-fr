@@ -1,7 +1,8 @@
-import { products, suggestions } from '../helpers/Data/Beauty';
+import { products, suggestions, ingredients } from '../helpers/Data/Beauty';
 export class Beauty {
   // Get skin care products
   getSkincareProducts(info) {
+    // Destrucuring the properties
     const {
       type,
       scalpType,
@@ -45,6 +46,29 @@ export class Beauty {
     return productList;
   }
 
+  // Get skin care ingredients
+  getSkinCareIngredients(info) {
+    const {faceConcern, hairConcern, bodyConcern} = info;
+    let selected;
+
+    if (faceConcern || bodyConcern) {
+      selected = ingredients?.find(
+        (ingredient) =>
+          (ingredient?.skin_concern?.toLowerCase().trim() ===
+          faceConcern?.toLowerCase().trim()) || (ingredient?.skin_concern?.toLowerCase().trim() ===
+          bodyConcern?.toLowerCase().trim())
+      );
+    } else if (hairConcern) {
+      selected = ingredients?.find(
+        (ingredient) =>
+          ingredient?.hair_concern?.toLowerCase().trim() ===
+          hairConcern?.toLowerCase().trim()
+      );
+    }
+
+    return selected;
+  }
+
   // Get skin care suggestions
   getSkinCareSuggestions(info) {
     const { faceConcern, hairConcern } = info;
@@ -66,4 +90,5 @@ export class Beauty {
 
     return suggestion;
   }
+
 }

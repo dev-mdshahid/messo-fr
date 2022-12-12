@@ -2,20 +2,40 @@ import React from 'react';
 
 //Importing icons
 import { BiSearchAlt } from 'react-icons/bi';
-import {
-  MdOutlineRecommend,
-  MdRecommend,
-  MdTipsAndUpdates,
-} from 'react-icons/md';
+import { MdOutlineRecommend, MdTipsAndUpdates } from 'react-icons/md';
 
-const ShowProducts = ({ products, choiceList, suggestion }) => {
-  console.log(suggestion);
+const ShowProducts = ({ products, choiceList, suggestion, ingredients }) => {
+  console.log(ingredients);
   return (
     <div className="flex justify-center max-w-[900px] mx-auto">
       <div>
         <h1 className="text-4xl mb-7 mt-10 text-center">
           Here is your suggestions
         </h1>
+
+        {/* Ingredients */}
+        {ingredients ? (
+          <div className="mb-5">
+            <div className="bg-white rounded-lg overflow-hidden border border-blue-100">
+              <h2 className="flex items-center gap-2 text-blue-900 text-2xl font-semibold p-5 pb-3">
+                <MdTipsAndUpdates className="text-3xl" /> Ingredients to look
+                for
+              </h2>
+              <div className="h-px w-full bg-blue-900 opacity-20"></div>
+              <p className="p-5">
+                {ingredients?.ingredients.split('*').map((line) => (
+                  <p>
+                    {line}
+                    <br />
+                    <br />
+                  </p>
+                ))}
+              </p>
+            </div>
+          </div>
+        ) : (
+          ''
+        )}
 
         {/* Recommended products */}
         <div className="mb-5">
@@ -110,7 +130,7 @@ const ProductCard = ({ name, img, id, choiceList }) => {
             )} */}
             {faceType ? (
               <p className="">
-                <span className="font-semibold">Scalp type:</span> {faceType}
+                <span className="font-semibold">Face type:</span> {faceType}
               </p>
             ) : (
               ''

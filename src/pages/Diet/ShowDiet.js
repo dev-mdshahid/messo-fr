@@ -1,14 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect, useContext } from 'react';
+
+// Importing conext api
+import { LoginContext } from '../../helpers/Contexts';
 import { Authentication } from '../../Classes/Authentication';
+
+// Importing components
 import { Diet } from '../../Classes/Diet';
 import CaloriesChart from './CaloriesChart';
-import FoodContainer from './FoodContainer';
-import cleanVegetable from '../../media/lotties/clean_vegetable.json';
 import midScreen from '../../media/lotties/mid_screen.json';
 import { Player } from '@lottiefiles/react-lottie-player';
-import { LoginContext } from '../../helpers/Contexts';
 import DietContainer from './DietContainer';
 
 const ShowDiet = ({
@@ -25,12 +27,10 @@ const ShowDiet = ({
 
   //Contexts
   const { user } = useContext(LoginContext);
+  
+  // Collecting user information
+  const {age, height, weight, gender} = user;
 
-  //Variables
-  const age = 23;
-  const weight = 50;
-  const height = 165;
-  const gender = 'male';
   const userInfo = {
     age,
     weight,
@@ -44,13 +44,11 @@ const ShowDiet = ({
     activity,
   };
 
-  console.log(user);
-  console.log(dietChart);
-
   // Class objects
   const auth = new Authentication();
   const dietObj = new Diet();
 
+  // Data fetching 
   useEffect(() => {
     const fetchFoods = async () => {
       const res = await fetch(auth.uribk + '/foods');
@@ -73,11 +71,9 @@ const ShowDiet = ({
     fetchDiet();
   }, []);
 
-  console.log(foods);
-  console.log(dietChart);
   return (
     <div>
-      {dietChart && foods.length ? (
+      {dietChart && foods.length > 0 ? (
         <div className="flex justify-center">
           <div>
             <h1 className="text-4xl capitalize mb-10 mt-10 text-center">
@@ -85,6 +81,7 @@ const ShowDiet = ({
             </h1>
             <div className="flex gap-5">
               <div>
+                {/* One for breakfast */}
                 <DietContainer
                   title={'breakfast'}
                   calories={dietChart?.breakfast?.calories}
@@ -93,6 +90,7 @@ const ShowDiet = ({
                   time={dietChart?.breakfast?.time}
                 />
 
+                {/* Mid Meal */}
                 <DietContainer
                   title={'Mid Meal'}
                   calories={dietChart?.midMeal?.calories}
@@ -100,6 +98,7 @@ const ShowDiet = ({
                   foods={dietChart?.midMeal?.foods}
                   time={dietChart?.midMeal?.time}
                 />
+
                 <DietContainer
                   title={'Before Lunch'}
                   calories={dietChart?.beforeLunch?.calories}
@@ -107,6 +106,7 @@ const ShowDiet = ({
                   foods={dietChart?.beforeLunch?.foods}
                   time={dietChart?.beforeLunch?.time}
                 />
+
                 <DietContainer
                   title={'Lunch'}
                   calories={dietChart?.lunch?.calories}
@@ -114,18 +114,21 @@ const ShowDiet = ({
                   foods={dietChart?.lunch?.foods}
                   time={dietChart?.lunch?.time}
                 />
+
                 <DietContainer
                   title={'Evening'}
                   calories={dietChart?.evening?.calories}
                   allFoods={foods}
                   foods={dietChart?.evening?.foods}
                 />
+
                 <DietContainer
                   title={'Dinner'}
                   calories={dietChart?.Dinner?.calories}
                   allFoods={foods}
                   foods={dietChart?.Dinner?.foods}
                 />
+                
                 <DietContainer
                   title={'After Dinner'}
                   calories={dietChart?.afterDinner?.calories}

@@ -1,13 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 
+// Importing components
 import ChoiceBox from '../../components/Shared/ChoiceBox';
 import ShowDiet from './ShowDiet';
-
 import { BiCheckbox } from 'react-icons/bi';
-
-//Importing lottiefiles
-import progressBar from '../../media/lotties/progress_bar.json';
 
 // Importing icons
 import vegetarian from '../../media/img/icons/vegetarian.png';
@@ -21,6 +18,7 @@ import maintainWeigth from '../../media/img/icons/weight_maintain.png';
 import inactive from '../../media/img/icons/inactive_diet.png';
 import slightlyActive from '../../media/img/icons/slightly_active_diet.png';
 import veryActive from '../../media/img/icons/very_active_diet.png';
+
 const DietBuilder = () => {
   //Step controller state
   const [step, setStep] = useState(1);
@@ -46,12 +44,14 @@ const DietBuilder = () => {
   };
 
   const handleSubmit = (e) => {
+    // It prevents the ui from reloading
     e.preventDefault();
     setStep(step + 1);
   };
 
   console.log(duration);
 
+  
   return step === 1 ? (
     //Step 1
     <div>
@@ -62,6 +62,7 @@ const DietBuilder = () => {
           <h1 className="text-4xl text-center">What is your type?</h1>
           {/* Choice boxes */}
           <div className="flex gap-6 mt-12">
+            {/* Box-1 */}
             <div onClick={() => setStep(2)}>
               <ChoiceBox
                 img={vegetarian}
@@ -70,6 +71,8 @@ const DietBuilder = () => {
                 setTarget={setType}
               />
             </div>
+
+            {/* Box-2 */}
             <div onClick={() => setStep(2)}>
               <ChoiceBox
                 img={nonVegetarian}
@@ -78,6 +81,8 @@ const DietBuilder = () => {
                 setTarget={setType}
               />
             </div>
+
+            {/* Box-3 */}
             <div onClick={() => setStep(2)}>
               <ChoiceBox
                 img={peraNai}
@@ -134,6 +139,7 @@ const DietBuilder = () => {
           {/* Question */}
           <h1 className="text-4xl text-center">
             How much kgs do you want to{' '}
+            {/* Conditional rendering(loading) */}
             {target === 'Gain Weight' ? 'gain?' : 'lose?'}
           </h1>
           {/* Input box */}

@@ -2,6 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 import ChoiceBox from '../../components/Shared/ChoiceBox';
 
+// For modal
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment } from 'react';
+
 // Importing icons
 // png icons
 // Concern type
@@ -47,9 +51,12 @@ import rashBody from '../../media/img/icons/rash_body.png';
 import acneBody from '../../media/img/icons/acne_body.png';
 import brightBody from '../../media/img/icons/bright_body.png';
 import { Beauty } from '../../Classes/Beauty';
+
+// Import components
 import ShowProducts from './ShowProducts';
 
 const BeautyCare = () => {
+  // Declaring state
   const [step, setStep] = useState(1);
   const [type, setType] = useState();
   const [scalpType, setScalpType] = useState();
@@ -59,6 +66,28 @@ const BeautyCare = () => {
   const [faceConcern, setFaceConcern] = useState();
   const [bodyType, setBodyType] = useState();
   const [bodyConcern, setBodyConcern] = useState();
+
+  // Modal
+  let [isOpen, setIsOpen] = useState(false);
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  // How to
+  const oily = `
+  If your skin appears shiny throughout, you likely have oily skin.`;
+  const dry = `
+  If it feels tight and is flaky or scaly, you likely have dry skin.`;
+  const combinational = `
+  If the shine is only in your T-zone, you probably have combination skin.`;
+  const normal = `
+  If your skin feels hydrated and comfortable, but not oily, you likely have normal skin.`;
+  const sensitive = `If your skin feels itchy and dry and most often your skin becomes reddish and notice rashes then you are likely to have sensitive skin.`;
 
   const choiceList = {
     type,
@@ -85,7 +114,9 @@ const BeautyCare = () => {
   const beautyObj = new Beauty();
   const products = beautyObj.getSkincareProducts(infoObj);
   const suggestion = beautyObj.getSkinCareSuggestions(infoObj);
-  console.log(products);
+  const ingredients = beautyObj.getSkinCareIngredients(infoObj);
+
+  console.log(ingredients);
 
   return step === 1 ? (
     <div>
@@ -96,6 +127,7 @@ const BeautyCare = () => {
           <h1 className="text-4xl text-center">What is it about?</h1>
           {/* Choice boxes */}
           <div className="flex gap-6 mt-12">
+            {/* Box-1 */}
             <div onClick={() => setStep(5)}>
               <ChoiceBox
                 img={hair}
@@ -104,6 +136,8 @@ const BeautyCare = () => {
                 setTarget={setType}
               />
             </div>
+
+            {/* Box-2 */}
             <div onClick={() => setStep(step + 1)}>
               <ChoiceBox
                 img={skin}
@@ -191,6 +225,109 @@ const BeautyCare = () => {
             />
           </div>
         </div>
+
+        <button
+          className="mt-10 underline text-blue-900 font-semibold"
+          onClick={() => openModal()}
+        >
+          Don't know your skin type?
+        </button>
+
+        {/* Modal */}
+        <Transition appear show={isOpen} as={Fragment}>
+          <Dialog as="div" className="relative z-10" onClose={closeModal}>
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-black bg-opacity-25" />
+            </Transition.Child>
+
+            <div className="fixed inset-0 overflow-y-auto">
+              <div className="flex min-h-full items-center justify-center p-4 text-center">
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95"
+                  enterTo="opacity-100 scale-100"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100"
+                  leaveTo="opacity-0 scale-95"
+                >
+                  <Dialog.Panel className="w-full max-w-[500px] max-h-[700px] transform rounded-2xl bg-white p-8 px-8 text-left align-middle shadow-xl transition-all">
+                    <Dialog.Title
+                      as="h3"
+                      className="text-2xl text-center font-semibold leading-6 text-blue-900 mb-7"
+                    >
+                      Test your skin type
+                    </Dialog.Title>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        To start, wash your face with a gentle cleanser, then
+                        gently pat it dry. Wait 30 minutes. 
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        <span className="font-semibold text-blue-900 ">
+                          Dry skin:{' '}
+                        </span>
+                        {dry}
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        <span className="font-semibold text-blue-900 ">
+                          Oily skin:{' '}
+                        </span>
+                        {oily}
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        <span className="font-semibold text-blue-900 ">
+                          Combinational skin:{' '}
+                        </span>
+                        {combinational}
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        <span className="font-semibold text-blue-900 ">
+                          Normal skin:{' '}
+                        </span>
+                        {normal}
+                      </p>
+                    </div>
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500 mt-5">
+                        <span className="font-semibold text-blue-900 ">
+                          Sensitive skin:{' '}
+                        </span>
+                        {sensitive}
+                      </p>
+                    </div>
+
+                    <div className="mt-4">
+                      <button
+                        type="button"
+                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 mt-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Got it, thanks!
+                      </button>
+                    </div>
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
+            </div>
+          </Dialog>
+        </Transition>
       </div>
     </div>
   ) : step === 4 ? (
@@ -419,7 +556,12 @@ const BeautyCare = () => {
       </div>
     </div>
   ) : (
-    <ShowProducts products={products} choiceList={choiceList} suggestion={suggestion}/>
+    <ShowProducts
+      products={products}
+      choiceList={choiceList}
+      suggestion={suggestion}
+      ingredients={ingredients}
+    />
   );
 };
 
